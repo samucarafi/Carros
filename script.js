@@ -5,6 +5,7 @@ let container = document.querySelector('.container')
 let items=  container.querySelectorAll('.list .item')
 let indicator= document.querySelector('.indicators')
 let dots = indicator.querySelectorAll('ul li')
+let list=container.querySelector('.list')
 
 let active=0
 let firstPosition = 0
@@ -23,12 +24,13 @@ function altCar(){
 }
 
 nextButton.onclick=()=>{
-    
+    list.style.setProperty('--calculation',1)//muda propriedade que multiplica posição que carro desliza, neste caso da direita para esquerda
     active==lastPosition? active=firstPosition : active++
     altCar()
 }
 
 prevButton.onclick=()=>{
+    list.style.setProperty('--calculation',-1)//muda propriedade que multiplica posição que carro desliza, neste caso da esquerda para direita
     active==firstPosition?active=lastPosition:active--
     altCar()
 }

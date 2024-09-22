@@ -29,7 +29,14 @@ header img{
 header ul{
     display: grid;
     grid-template-columns: repeat(3, 200px);/*3 colunas de 200px  */
+    & li{
+        cursor: pointer;
+        &:hover{
+            text-decoration:underline ;
+        }
+    }
 }
+
 section{
     background-image: radial-gradient(#7f3d9e, #6d00d9);
     height: 100vh;
@@ -63,6 +70,18 @@ section{
         width: 100%;
         transform: rotate(-30deg);
     }
+    &::before{
+        content: '';
+        position: absolute;
+        background-color: black;
+        width: 100%;
+        height: 100px;
+        top: 150%;
+        left: 50px;
+        border-radius: 50%;
+        filter: blur(50px);/*deixar esfumaçado*/
+    }
+    
 }
 .content{
     position: absolute;
@@ -75,7 +94,7 @@ section{
     align-items: end;
     gap: 20px;
     & h2{
-        font-size: 8em;
+        font-size: 6em;
         line-height: 1em;
         font-family: "League Gothic", sans-serif;
     }
@@ -167,9 +186,9 @@ section{
 section{
 
     & .list{
-
+    --calculation:1;
         & .item{
-            transform: translateX(100vw);/* fazer o carrinho e informações sumirem inicialmente*/
+            transform: translateX(calc(100vw * var(--calculation)));/* fazer o carrinho e informações sumirem inicialmente a multiplicação pela variavel calculation controlada no script será para trazer o item pela esquerda ou pela direita multiplicando por -1*/
             transition: 0.5s;
             opacity: 0;
 
@@ -185,7 +204,7 @@ section{
 
 
                 & .car-information, h2, .description, .information{
-                    transform: translateX(200px);/*Deslocamento de 200px antes de ir para local correto*/
+                    transform: translateX(calc(200px*var(--calculation)));/*Deslocamento de 200px antes de ir para local correto*/
                     transition: 0.7s;
                     transition-delay: 0.3s;
                     opacity: 0;
@@ -223,6 +242,19 @@ section{
                     opacity: 1;
                 }
             }    
+        }
+    }
+}
+footer{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    & a{
+        color: white;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
         }
     }
 }
